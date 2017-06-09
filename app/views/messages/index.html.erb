@@ -18,14 +18,16 @@
 
       <% @messages.each do |message| %>
       <tr>
-        <td><%= message.sender_id %></td>
-        <td><%= message.receiver_id %></td>
+        <td><%= message.sending_user.username %></td>
+        <td><%= message.receiving_user.username %></td>
         <td><%= message.body %></td>
-        <td><%= message.team_id %></td>
+        <td><%= message.team.name %></td>
         <td>
           <a href="/messages/<%= message.id %>" class="btn btn-primary">Show</a>
+          <% if message.sending_user.username == current_user.username %>
           <a href="/messages/<%= message.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_message/<%= message.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end  %>
         </td>
       </tr>
       <% end %>

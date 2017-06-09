@@ -19,13 +19,7 @@
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Label and input for creator_id -->
-      <div class="form-group">
-        <label for="creator_id" class="control-label">
-          Creator
-        </label>
-
-        <input type="text" id="creator_id" name="creator_id" placeholder="Creator" class="form-control" value="<%= @invitation.creator_id %>">
-      </div>
+        <input type="hidden" id="creator_id" name="creator_id" placeholder="Creator" class="form-control" value="<%= current_user.id %>">
 
       <!-- Label and input for member_id -->
       <div class="form-group">
@@ -33,15 +27,7 @@
           Member
         </label>
 
-        <input type="text" id="member_id" name="member_id" placeholder="Member" class="form-control" value="<%= @invitation.member_id %>">
-      </div>
-
-      <!-- Label and input for accepted -->
-      <div class="checkbox">
-        <label for="accepted">
-          <input type="checkbox" id="accepted" name="accepted" value="1" <%= "checked" if @invitation.accepted %>>
-          Accepted
-        </label>
+        <%= select_tag(:member_id, options_from_collection_for_select(User.all, :id, :username, @invitation.member), :class => "form-control") %>
       </div>
 
       <!-- Label and input for team_id -->
@@ -50,8 +36,18 @@
           Team
         </label>
 
-        <input type="text" id="team_id" name="team_id" placeholder="Team" class="form-control" value="<%= @invitation.team_id %>">
+        <%= select_tag(:team_id, options_from_collection_for_select(Team.all, :id, :name, @invitation.team), :class => "form-control") %>
       </div>
+      
+      <!-- Label and input for accepted -->
+      <div class="checkbox">
+        <label for="accepted">
+          <input type="checkbox" id="accepted" name="accepted" value="1" <%= "checked" if @invitation.accepted %>>
+          Accepted
+        </label>
+      </div>
+
+
 
       <button class="btn btn-warning">
         Update Invitation

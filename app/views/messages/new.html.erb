@@ -20,11 +20,8 @@
 
       <!-- Label and input for sender_id -->
       <div class="form-group">
-        <label for="sender_id" class="control-label">
-          Sender
-        </label>
 
-        <input type="text" id="sender_id" name="sender_id" placeholder="Sender" class="form-control" value="<%= @message.sender_id %>">
+      <input type="hidden" id="sender_id" name="sender_id" placeholder="Sender" class="form-control" value="<%= current_user.id %>">
       </div>
 
       <!-- Label and input for receiver_id -->
@@ -33,7 +30,7 @@
           Receiver
         </label>
 
-        <input type="text" id="receiver_id" name="receiver_id" placeholder="Receiver" class="form-control" value="<%= @message.receiver_id %>">
+        <%= select_tag(:receiver_id, options_from_collection_for_select(User.all, :id, :username, @message.receiving_user), :class => "form-control") %>
       </div>
 
       <!-- Label and input for body -->
@@ -51,7 +48,7 @@
           Team
         </label>
 
-        <input type="text" id="team_id" name="team_id" placeholder="Team" class="form-control" value="<%= @message.team_id %>">
+        <%= select_tag(:team_id, options_from_collection_for_select(Team.all, :id, :name, @message.team), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">

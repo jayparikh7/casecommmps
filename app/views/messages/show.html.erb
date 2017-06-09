@@ -6,16 +6,16 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Sender</dt>
-      <dd><%= @message.sender_id %></dd>
+      <dd><%= @message.sending_user.username %></dd>
 
       <dt>Receiver</dt>
-      <dd><%= @message.receiver_id %></dd>
+      <dd><%= @message.receiving_user.username %></dd>
 
       <dt>Body</dt>
       <dd><%= @message.body %></dd>
 
       <dt>Team</dt>
-      <dd><%= @message.team_id %></dd>
+      <dd><%= @message.team.name %></dd>
 
     </dl>
 
@@ -23,12 +23,14 @@
       <a href="/messages" class="btn btn-primary">
         Back
       </a>
+      <% if @message.sending_user.username == current_user.username %>
       <a href="/messages/<%= @message.id %>/edit" class="btn btn-warning">
         Edit
       </a>
       <a href="/delete_message/<%= @message.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
+      <% end  %>
     </div>
   </div>
 </div>

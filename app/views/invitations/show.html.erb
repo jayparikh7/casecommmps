@@ -6,16 +6,16 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Creator</dt>
-      <dd><%= @invitation.creator_id %></dd>
+      <dd><%= @invitation.creator.username %></dd>
 
       <dt>Member</dt>
-      <dd><%= @invitation.member_id %></dd>
+      <dd><%= @invitation.member.username %></dd>
 
       <dt>Accepted</dt>
       <dd><%= @invitation.accepted %></dd>
 
       <dt>Team</dt>
-      <dd><%= @invitation.team_id %></dd>
+      <dd><%= @invitation.team.name %></dd>
 
     </dl>
 
@@ -23,12 +23,14 @@
       <a href="/invitations" class="btn btn-primary">
         Back
       </a>
+      <% if @invitation.creator.username == current_user.username  %>
       <a href="/invitations/<%= @invitation.id %>/edit" class="btn btn-warning">
         Edit
       </a>
       <a href="/delete_invitation/<%= @invitation.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
+      <% end  %>
     </div>
   </div>
 </div>
