@@ -40,17 +40,44 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/invitations">Invitations</a></li>
-          <li><a href="/results">Results</a></li>
-          <li><a href="/messages">Messages</a></li>
-          <li><a href="/teams">Teams</a></li>
           <li><a href="/competitions">Competitions</a></li>
-          <li><a href="/rails/info">Sitemap</a></li>
+          <!-- <li><a href="/invitations">Invitations</a></li> -->
+          <!-- <li><a href="/results">Results</a></li> -->
+          <li><a href="/teams">Teams</a></li>
+          <li><a href="/users">Users</a></li>
+          <li><a href="/messages">Messages</a></li>
+          <!-- <li><a href="/rails/info">Sitemap</a></li> -->
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/users/edit">Dummy Edit Profile Link</a></li>
-          <li><a href="/users/sign_out" data-method="delete" rel="nofollow">Dummy Sign Out Link</a></li>
+          <!-- <li><a href="/users/edit">Dummy Edit Profile Link</a></li> -->
+          <!-- <li><a href="/users/sign_out" data-method="delete" rel="nofollow">Dummy Sign Out Link</a></li> -->
+
+          <!-- if no user then sign up/in -->
+          <% if current_user == nil %>
+          <li>
+            <a href="/users/sign_up">
+              Sign Up
+            </a>
+          </li>
+          <li>
+            <a href="/users/sign_in">
+              Sign In
+            </a>
+          </li>
+          <!-- else edit/sign out -->
+          <% else  %>
+          <li>
+            <a href="/users/edit">
+              <%= current_user.username %>
+            </a>
+          </li>
+          <li>
+            <a href="/users/sign_out" data-method="delete" rel="nofollow">
+              <i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out</a>
+            </li>
+            <% end %>
+
         </ul>
       </div><!-- /.navbar-collapse -->
     </div>

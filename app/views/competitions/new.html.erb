@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add a New Competition</h3>
+  <h3>Add Competition</h3>
 </div>
 
 <div class="row">
@@ -79,31 +79,6 @@
         </label>
 
         <input type="text" id="deadline" name="deadline" placeholder="Deadline" class="form-control" value="<%= @competition.deadline %>">
-      </div>
-
-      <!-- Label and input for teams -->
-      <div class="checkbox">
-        <label for="teams">
-          <input type="checkbox" id="teams" name="teams" value="1" <%= "checked" if @competition.teams %>>
-          Teams
-        </label>
-      </div>
-
-      <!-- Label and input for max_teams -->
-      <div class="checkbox">
-        <label for="max_teams">
-          <input type="checkbox" id="max_teams" name="max_teams" value="1" <%= "checked" if @competition.max_teams %>>
-          Max teams
-        </label>
-      </div>
-
-      <!-- Label and input for max -->
-      <div class="form-group">
-        <label for="max" class="control-label">
-          Max
-        </label>
-
-        <input type="text" id="max" name="max" placeholder="Max" class="form-control" value="<%= @competition.max %>">
       </div>
 
       <button class="btn btn-success">

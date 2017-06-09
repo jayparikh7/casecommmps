@@ -21,6 +21,7 @@
 #  team_owner             :boolean
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  username               :string
 #
 # Indexes
 #
@@ -44,10 +45,6 @@ class User < ApplicationRecord
   has_many :requested_teams, :through => :invitations_received, :source => :team
 
   # Validations
-
-  validates :username, presence: true, uniqueness: true
-
-
 
 
 end

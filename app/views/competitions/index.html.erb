@@ -16,9 +16,6 @@
         <th>Prize money</th>
         <th>Topic</th>
         <th>Deadline</th>
-        <th>Teams</th>
-        <th>Max teams</th>
-        <th>Max</th>
         <th>Actions</th>
       </tr>
 
@@ -31,9 +28,6 @@
         <td><%= competition.prize_money %></td>
         <td><%= competition.topic %></td>
         <td><%= competition.deadline %></td>
-        <td><%= competition.teams %></td>
-        <td><%= competition.max_teams %></td>
-        <td><%= competition.max %></td>
         <td>
           <a href="/competitions/<%= competition.id %>" class="btn btn-primary">Show</a>
           <a href="/competitions/<%= competition.id %>/edit" class="btn btn-warning">Edit</a>
