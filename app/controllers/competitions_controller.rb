@@ -27,9 +27,6 @@ class CompetitionsController < ApplicationController
     @competition.prize_money = params[:prize_money]
     @competition.topic = params[:topic]
     @competition.deadline = params[:deadline]
-    @competition.teams = params[:teams]
-    @competition.max_teams = params[:max_teams]
-    @competition.max = params[:max]
 
     save_status = @competition.save
 
@@ -56,9 +53,6 @@ class CompetitionsController < ApplicationController
     @competition.prize_money = params[:prize_money]
     @competition.topic = params[:topic]
     @competition.deadline = params[:deadline]
-    @competition.teams = params[:teams]
-    @competition.max_teams = params[:max_teams]
-    @competition.max = params[:max]
 
     save_status = @competition.save
 

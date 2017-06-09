@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Competition resource:
+  # CREATE
+  get "/competitions/new", :controller => "competitions", :action => "new"
+  post "/create_competition", :controller => "competitions", :action => "create"
+
+  # READ
+  get "/competitions", :controller => "competitions", :action => "index"
+  get "/competitions/:id", :controller => "competitions", :action => "show"
+
+  # UPDATE
+  get "/competitions/:id/edit", :controller => "competitions", :action => "edit"
+  post "/update_competition/:id", :controller => "competitions", :action => "update"
+
+  # DELETE
+  get "/delete_competition/:id", :controller => "competitions", :action => "destroy"
+  #------------------------------
+
   # Routes for the Invitation resource:
   # CREATE
   get "/invitations/new", :controller => "invitations", :action => "new"
@@ -89,4 +106,10 @@ Rails.application.routes.draw do
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+# Routes for Users:
+# READ
+get "/users", :controller => "users", :action => "index"
+get "/users/:id", :controller => "users", :action => "show"
+
 end

@@ -8,9 +8,6 @@ class CreateCompetitions < ActiveRecord::Migration[5.0]
       t.float :prize_money
       t.string :topic
       t.datetime :deadline
-      t.boolean :teams
-      t.boolean :max_teams
-      t.integer :max
 
       t.timestamps
 

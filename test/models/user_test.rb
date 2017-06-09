@@ -21,6 +21,7 @@
 #  team_owner             :boolean
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  username               :string
 #
 # Indexes
 #

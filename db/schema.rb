@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609055121) do
+ActiveRecord::Schema.define(version: 20170609085150) do
 
   create_table "competitions", force: :cascade do |t|
     t.string   "name"
@@ -20,9 +20,6 @@ ActiveRecord::Schema.define(version: 20170609055121) do
     t.float    "prize_money"
     t.string   "topic"
     t.datetime "deadline"
-    t.boolean  "teams"
-    t.boolean  "max_teams"
-    t.integer  "max"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -81,6 +78,7 @@ ActiveRecord::Schema.define(version: 20170609055121) do
     t.boolean  "team_owner"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
