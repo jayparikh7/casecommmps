@@ -22,6 +22,6 @@ class Invitation < ApplicationRecord
 
   validates :team_id,
             :creator_id,
-            :member_id, presence: true, numericality: { only_integer: true }
+            :member_id, presence: true
 
 end

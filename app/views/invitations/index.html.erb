@@ -18,14 +18,16 @@
 
       <% @invitations.each do |invitation| %>
       <tr>
-        <td><%= invitation.creator_id %></td>
-        <td><%= invitation.member_id %></td>
+        <td><%= invitation.creator.username %></td>
+        <td><%= invitation.member.username %></td>
         <td><%= invitation.accepted %></td>
-        <td><%= invitation.team_id %></td>
+        <td><%= invitation.team.name %></td>
         <td>
           <a href="/invitations/<%= invitation.id %>" class="btn btn-primary">Show</a>
+          <% if invitation.creator.username == current_user.username  %>
           <a href="/invitations/<%= invitation.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_invitation/<%= invitation.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>

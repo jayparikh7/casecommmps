@@ -19,13 +19,7 @@
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Label and input for creator_id -->
-      <div class="form-group">
-        <label for="creator_id" class="control-label">
-          Creator
-        </label>
-
-        <input type="text" id="creator_id" name="creator_id" placeholder="Creator" class="form-control" value="<%= @team.creator_id %>">
-      </div>
+      <input type="hidden" id="creator_id" name="creator_id" value=" <%= current_user.id %>">
 
       <!-- Label and input for competitions_id -->
       <div class="form-group">
@@ -33,7 +27,8 @@
           Competitions
         </label>
 
-        <input type="text" id="competitions_id" name="competitions_id" placeholder="Competitions" class="form-control" value="<%= @team.competitions_id %>">
+        <%= select_tag(:competitions_id, options_from_collection_for_select(Competition.all, :id, :name, @team.results), :class => "form-control") %>
+        <a href="/competitions/new"> or add a new competition</a>
       </div>
 
       <!-- Label and input for name -->
@@ -46,13 +41,7 @@
       </div>
 
       <!-- Label and input for number_members -->
-      <div class="form-group">
-        <label for="number_members" class="control-label">
-          Number members
-        </label>
-
-        <input type="text" id="number_members" name="number_members" placeholder="Number members" class="form-control" value="<%= @team.number_members %>">
-      </div>
+        <input type="hidden" id="number_members" name="number_members" placeholder="Number members" class="form-control" value=4>
 
       <button class="btn btn-warning">
         Update Team

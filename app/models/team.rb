@@ -16,6 +16,7 @@ class Team < ApplicationRecord
   # Associations
 
   belongs_to :creater, :class_name => "User", :foreign_key => "creator_id"
+  belongs_to :competition, :foreign_key => "competitions_id"
   has_many :messages_to_team, :class_name => "Message", :dependent => :destroy
   has_many :results, :dependent => :destroy
   has_many :invitations, :dependent => :destroy
