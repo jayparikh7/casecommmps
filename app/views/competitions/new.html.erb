@@ -1,0 +1,116 @@
+<!-- Validation failure messages -->
+<% if @competition.errors.any? %>
+  <% @competition.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Competition</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_competition" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @competition.name %>">
+      </div>
+
+      <!-- Label and input for sponsor -->
+      <div class="form-group">
+        <label for="sponsor" class="control-label">
+          Sponsor
+        </label>
+
+        <input type="text" id="sponsor" name="sponsor" placeholder="Sponsor" class="form-control" value="<%= @competition.sponsor %>">
+      </div>
+
+      <!-- Label and input for location -->
+      <div class="form-group">
+        <label for="location" class="control-label">
+          Location
+        </label>
+
+        <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @competition.location %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @competition.description %></textarea>
+      </div>
+
+      <!-- Label and input for prize_money -->
+      <div class="form-group">
+        <label for="prize_money" class="control-label">
+          Prize money
+        </label>
+
+        <input type="text" id="prize_money" name="prize_money" placeholder="Prize money" class="form-control" value="<%= @competition.prize_money %>">
+      </div>
+
+      <!-- Label and input for topic -->
+      <div class="form-group">
+        <label for="topic" class="control-label">
+          Topic
+        </label>
+
+        <input type="text" id="topic" name="topic" placeholder="Topic" class="form-control" value="<%= @competition.topic %>">
+      </div>
+
+      <!-- Label and input for deadline -->
+      <div class="form-group">
+        <label for="deadline" class="control-label">
+          Deadline
+        </label>
+
+        <input type="text" id="deadline" name="deadline" placeholder="Deadline" class="form-control" value="<%= @competition.deadline %>">
+      </div>
+
+      <!-- Label and input for teams -->
+      <div class="checkbox">
+        <label for="teams">
+          <input type="checkbox" id="teams" name="teams" value="1" <%= "checked" if @competition.teams %>>
+          Teams
+        </label>
+      </div>
+
+      <!-- Label and input for max_teams -->
+      <div class="checkbox">
+        <label for="max_teams">
+          <input type="checkbox" id="max_teams" name="max_teams" value="1" <%= "checked" if @competition.max_teams %>>
+          Max teams
+        </label>
+      </div>
+
+      <!-- Label and input for max -->
+      <div class="form-group">
+        <label for="max" class="control-label">
+          Max
+        </label>
+
+        <input type="text" id="max" name="max" placeholder="Max" class="form-control" value="<%= @competition.max %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Competition
+      </button>
+      or
+      <a href="/competitions">Cancel</a>
+    </form>
+  </div>
+</div>

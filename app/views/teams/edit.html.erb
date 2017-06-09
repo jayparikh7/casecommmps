@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @team.errors.any? %>
+  <% @team.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Team #<%= @team.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_team/<%= @team.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for creator_id -->
+      <div class="form-group">
+        <label for="creator_id" class="control-label">
+          Creator
+        </label>
+
+        <input type="text" id="creator_id" name="creator_id" placeholder="Creator" class="form-control" value="<%= @team.creator_id %>">
+      </div>
+
+      <!-- Label and input for competitions_id -->
+      <div class="form-group">
+        <label for="competitions_id" class="control-label">
+          Competitions
+        </label>
+
+        <input type="text" id="competitions_id" name="competitions_id" placeholder="Competitions" class="form-control" value="<%= @team.competitions_id %>">
+      </div>
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @team.name %>">
+      </div>
+
+      <!-- Label and input for number_members -->
+      <div class="form-group">
+        <label for="number_members" class="control-label">
+          Number members
+        </label>
+
+        <input type="text" id="number_members" name="number_members" placeholder="Number members" class="form-control" value="<%= @team.number_members %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Team
+      </button>
+      or
+      <a href="/teams/<%= @team.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

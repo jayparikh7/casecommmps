@@ -1,0 +1,52 @@
+<div class="page-header">
+  <h3>Competition #<%= @competition.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @competition.name %></dd>
+
+      <dt>Sponsor</dt>
+      <dd><%= @competition.sponsor %></dd>
+
+      <dt>Location</dt>
+      <dd><%= @competition.location %></dd>
+
+      <dt>Description</dt>
+      <dd><%= @competition.description %></dd>
+
+      <dt>Prize money</dt>
+      <dd><%= @competition.prize_money %></dd>
+
+      <dt>Topic</dt>
+      <dd><%= @competition.topic %></dd>
+
+      <dt>Deadline</dt>
+      <dd><%= @competition.deadline %></dd>
+
+      <dt>Teams</dt>
+      <dd><%= @competition.teams %></dd>
+
+      <dt>Max teams</dt>
+      <dd><%= @competition.max_teams %></dd>
+
+      <dt>Max</dt>
+      <dd><%= @competition.max %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/competitions" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/competitions/<%= @competition.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_competition/<%= @competition.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

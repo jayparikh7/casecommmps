@@ -1,0 +1,63 @@
+<!-- Validation failure messages -->
+<% if @invitation.errors.any? %>
+  <% @invitation.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Invitation #<%= @invitation.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_invitation/<%= @invitation.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for creator_id -->
+      <div class="form-group">
+        <label for="creator_id" class="control-label">
+          Creator
+        </label>
+
+        <input type="text" id="creator_id" name="creator_id" placeholder="Creator" class="form-control" value="<%= @invitation.creator_id %>">
+      </div>
+
+      <!-- Label and input for member_id -->
+      <div class="form-group">
+        <label for="member_id" class="control-label">
+          Member
+        </label>
+
+        <input type="text" id="member_id" name="member_id" placeholder="Member" class="form-control" value="<%= @invitation.member_id %>">
+      </div>
+
+      <!-- Label and input for accepted -->
+      <div class="checkbox">
+        <label for="accepted">
+          <input type="checkbox" id="accepted" name="accepted" value="1" <%= "checked" if @invitation.accepted %>>
+          Accepted
+        </label>
+      </div>
+
+      <!-- Label and input for team_id -->
+      <div class="form-group">
+        <label for="team_id" class="control-label">
+          Team
+        </label>
+
+        <input type="text" id="team_id" name="team_id" placeholder="Team" class="form-control" value="<%= @invitation.team_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Invitation
+      </button>
+      or
+      <a href="/invitations/<%= @invitation.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
